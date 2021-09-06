@@ -19,3 +19,17 @@ let songs = songsContainer.querySelectorAll('.song');
 let addButton = container.querySelector('.form__submit-btn_action_add');
 let resetButton = container.querySelector('.form__submit-btn_action_reset');
 /*Кнопки, как и другие HTML-элементы, могут быть найдены методом*/
+
+/*Когда в плейлисте нет песен, кнопка «Очистить плейлист» должна быть неактивна.
+Методом setAttribute добавьте атрибут disabled кнопке resetButton, если количество
+песен равно 0.*/
+if (songs.length === 0) {
+    resetButton.setAttribute('disabled', 'true');
+    resetButton.setAttribute('style', 'background-color:#f1f1f1');
+}
+/*Принято отдельно прописывать стили для неактивных кнопок.
+    Задайте неактивной кнопке цвет фона #f1f1f1.*/
+/*Отлично! Отметим, что задачу можно решить двумя способами:
+    resetButton.setAttribute('style', 'background-color: #f1f1f1');
+        или
+        resetButton.style.backgroundColor = '#f1f1f1';*/
