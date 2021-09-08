@@ -151,3 +151,9 @@ h3 {
 form__submit-btn_disabled и задайте ему два свойства:
 цвет фона #f1f1f1;
 вид курсора при наведении default.*/
+
+
+/*Последний штрих. В файле style.css допишите селектор .no-songs_hidden со свойством display: none.*/
+.no-songs_hidden {
+    display: none;
+}

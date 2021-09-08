@@ -8,7 +8,7 @@ let container = document.querySelector('.container');
 let songsContainer = container.querySelector('.songs-container');
 /*Каждая песня в плейлисте — элемент с классом song. Вызовом метода querySelectorAll выберите все треки и запишите их в
 переменную songs. Сейчас в неё будет записан пустой массив: ведь в плейлисте пока нет ни одной песни.*/
-let songs = songsContainer.querySelectorAll('.song');
+// let songs = songsContainer.querySelectorAll('.song');
 /*Вы только что получили список всех песен в плейлисте.
 Пока этот список пустой, но скоро...*/
 
@@ -44,16 +44,16 @@ if (songs.length === 0) {
     // здесь уберём атрибут "disabled"
     // а здесь уберём класс "form__submit-btn_disabled"
 } */
-if (songs.length === 0) {
+/*if (songs.length === 0) {
     resetButton.setAttribute('disabled', 'true');
-    /*resetButton.setAttribute('style', 'background-color:#f1f1f1'); - правильно для
-    предыдущего задания*/
+    /!*resetButton.setAttribute('style', 'background-color:#f1f1f1'); - правильно для
+    предыдущего задания*!/
     resetButton.classList.add('form__submit-btn_disabled');
 }
 else {
     resetButton.removeAttribute('disabled', 'true');    // здесь уберём атрибут "disabled"
     resetButton.classList.remove('form__submit-btn_disabled');// а здесь уберём класс "form__submit-btn_disabled"
-}
+}*/
 
 /*Пришло время добавлять песни. Мы подготовили разметку одного трека:
     <div class="song">
@@ -66,6 +66,25 @@ else {
 Кнопку «Добавить» вы тоже заставите работать позже.
 Напишите функцию addSong. Она должна добавлять разметку песни в контейнер songs-container.
 Не забудьте, что функцию нужно не только описать, но и вызвать: только так песня будет добавлена.*/
+function renderAdded() {
+    let songs = songsContainer.querySelectorAll('.song');
+    let noSongsElement = container.querySelector('.no-songs');
+    if (songs.length === 0) {
+        resetButton.setAttribute('disabled', 'true');
+        /*resetButton.setAttribute('style', 'background-color:#f1f1f1'); - правильно для
+        предыдущего задания*/
+        resetButton.classList.add('form__submit-btn_disabled');
+        noSongsElement.classList.add('no-songs_hidden');
+        noSongsElement.classList.remove('no-songs_hidden');
+
+    }
+    else {
+        resetButton.removeAttribute('disabled', 'true');    // здесь уберём атрибут "disabled"
+        resetButton.classList.remove('form__submit-btn_disabled');// а здесь уберём класс "form__submit-btn_disabled"
+        noSongsElement.classList.remove('no-songs_hidden');
+        noSongsElement.classList.add('no-songs_hidden');
+    }
+}
 function addSong () {
     let songscontainer = document.querySelector('.songs-container');
     songscontainer.innerHTML += `<div class="song">
@@ -74,10 +93,13 @@ function addSong () {
         <button class="song__like"></button>
     </div>`;
     return songscontainer;
+    renderAdded();
 }
+/*
 addSong();
 addSong();
 addSong();
+*/
 
 /*ПОДСКАЗКА
 это в подсказке я сделал по другому как в коде
@@ -156,3 +178,74 @@ addSong();
 addSong();
 addSong();
 addSong(); */
+addButton.addEventListener('click', addSong);
+renderAdded();
+/*Пришло время добавить интерактивность!
+    Свяжем функцию addSong с кнопкой «Добавить». Для этого добавьте обработчик события методом addEventListener. Передайте ему 2 аргумента: тип события click и функцию-обработчик addSong.
+    Не забудьте удалить вызовы в коде — они были нужны только для тестирования функции:
+// удалите эти вызовы
+
+    addSong();
+addSong();
+addSong();*/
+/*Вы уже добавили новые треки, а кнопка «Очистить плейлист» по-прежнему неактивна. Всё из-за конструкции:
+    if (songs.length === 0) {
+        resetButton.setAttribute('disabled', true);
+        resetButton.classList.add('form__submit-btn_disabled');
+    } else {
+        resetButton.removeAttribute('disabled');
+        resetButton.classList.remove('form__submit-btn_disabled');
+    }
+Она срабатывает только единожды в начале кода. Нам же нужно, чтобы она отрабатывала дважды: при первом запуске кода и при добавлении песен.
+    Если код должен отрабатывать в разных местах, его следует вынести в функцию. Сделаем это. Перед объявлением функции addSong объявите функцию renderAdded. Поместите в неё нашу условную конструкцию:
+    function renderAdded() {
+        // переместите условную конструкцию сюда
+    }
+
+function addSong() {
+    songsContainer.innerHTML += `
+        <div class="song">
+            <h4 class="song__artist">Кино</h4>
+            <p class="song__title">Дерево</p>
+            <button class="song__like"></button>
+        </div>
+    `;
+}
+Определение переменной songs тоже перенесите внутрь функции renderAdded. Если этого не сделать, то в songs будут храниться только те песни, что были в контейнере в момент загрузки страницы. Нам это не подходит: нужно, чтобы в songs были все песни, что есть в контейнере. При каждом вызове функции renderAdded надо переопределять переменную songs.
+    function renderAdded() {
+    let songs = songsContainer.querySelectorAll('.song');
+
+    // переместите условную конструкцию сюда
+} */
+/*Код функции renderAdded должен отработать в трёх местах:
+    при загрузке страницы;
+когда вы добавляете песню в плейлист;
+когда вы очищаете плейлист.
+    Третий случай мы пока трогать не будем — вернёмся к нему позже, когда займёмся кнопкой «Очистить плейлист».
+Сейчас займёмся первыми двумя. Для этого будем вызывать renderAdded:
+    в конце тела функции addSong: при добавлении новых песен условная конструкция будет срабатывать, меняя цвет кнопки;
+в конце файла script.js, чтобы покрасить кнопку «Очистить плейлист» в серый цвет при загрузке страницы.
+    Добавьте вызовы функции в соответствующие места.*/
+
+/*В плейлист можно добавить новые треки, но надпись «Нет добавленных песен» при этом остаётся на своём месте:
+    image
+Надпись нужно убирать, если в плейлисте есть песни, и возвращать обратно, когда плейлист пуст. В условной конструкции внутри функции renderAdded мы как раз проверяем, есть ли треки в плейлисте, и меняем внешний вид страницы. Там и будем писать логику, когда нужно показывать надпись «Нет добавленных песен».
+Вам понадобятся методы classList.add и classList.remove: вызывайте их для элемента с классом no-songs. Как аргумент передайте методам класс no-songs_hidden.
+    Не забудьте определить переменную noSongsElement в начале функции renderAdded. В эту переменную нужно сохранить элемент с надписью «Нет добавленных песен» и вызвать соответствующие методы на ней:
+    function renderAdded() {
+        let songs = songsContainer.querySelectorAll('.song');
+
+        /!* определите переменную noSongsElement.
+        В неё должен попадать элемент с классом .no-songs *!/
+        let noSongsElement = container.querySelector('.no-songs');
+
+        if (songs.length === 0) {
+            resetButton.setAttribute('disabled', true);
+            resetButton.classList.add('form__submit-btn_disabled');
+            // добавьте вызов метода здесь
+        } else {
+            resetButton.removeAttribute('disabled');
+            resetButton.classList.remove('form__submit-btn_disabled');
+            // и добавьте вызов метода здесь
+        }
+    } */
