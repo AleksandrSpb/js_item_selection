@@ -143,3 +143,11 @@ h3 {
     opacity: 1;
     background: url(https://code.s3.yandex.net/web-code/dom/heart-filled.svg) center no-repeat;
 }
+.form__submit-btn_disabled  {
+    background-color:#f1f1f1;
+    cursor: default;
+}
+/*Сделаем неактивную кнопку серой. Для этого в файле style.css создайте селектор класса
+form__submit-btn_disabled и задайте ему два свойства:
+цвет фона #f1f1f1;
+вид курсора при наведении default.*/
