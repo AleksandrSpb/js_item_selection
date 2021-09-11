@@ -86,13 +86,21 @@ function renderAdded() {
     }
 }
 function addSong () {
+    let artist = document.querySelector('.input__text_type_artist');
+    let song = document.querySelector('.input__text_type_song');
     let songscontainer = document.querySelector('.songs-container');
-    songscontainer.innerHTML += `<div class="song">
-        <h4 class="song__artist">Кино</h4>
+    /*songscontainer.innerHTML += `<div class="song">   <h4 class="song__artist">Кино</h4>
         <p class="song__title">Дерево</p>
         <button class="song__like"></button>
-    </div>`;
-    return songscontainer;
+    </div>`;*/
+    songsContainer.insertAdjacentHTML('beforeend', `
+        <div class="song">
+          <h4 class="song__artist">${artist.value}</h4>
+          <p class="song__title">${song.value}</p>
+          <button class="song__like"></button>
+        </div>
+  `);
+
     renderAdded();
 }
 /*
@@ -249,3 +257,31 @@ function addSong() {
             // и добавьте вызов метода здесь
         }
     } */
+
+/*Сейчас внутри функции addSong мы добавляем новый трек через свойство .innerHTML.
+    Замените innerHTML на вызов метода insertAdjacentHTML.
+    В скобках укажите:
+    первый параметр — строка 'beforeend';
+второй параметр — HTML-код, который нужно добавить.*/
+/*На странице есть текстовое поле «Исполнитель». Это элемент input с классом input__text_type_artist. Методами querySelector и console.log выведите в консоль тип свойства value этого элемента. Для определения типа используйте оператор typeof.
+Сделайте всё это в конце файла script.js: это временный код, дальше мы его уберём.*/
+console.log(typeof document.querySelector('.input__text_type_artist').value);
+/*До сих пор мы много раз добавляли в плейлист одну и ту же песню. Пора это исправить: брать название и исполнителя трека из текстовых полей. Для этого изменим функцию addSong.
+    Для этого сделайте две вещи:
+    в начале тела функции addSong объявите переменные artist и song и запишите в них текстовые поля;
+сейчас внутри свойства songsContainer.insertAdjacentHTML жёстко указаны исполнитель и название песни. Вместо этого пропишите свойства artist.value и song.value.
+    function addSong() {
+    let artist = // выберите соответствующий input
+        let song = // выберите соответствующий input
+
+        songsContainer.insertAdjacentHTML('beforeend', `
+        <div class="song">
+          <h4 class="song__artist">${/!* вставьте сюда нужное значение *!/}</h4>
+          <p class="song__title">${/!* и сюда *!/}</p>
+          <button class="song__like"></button>
+        </div>
+  `);
+
+    renderAdded();
+}
+Также код стоит очистить от ненужных выводов в консоль. Удалите вызов console.log, который вы прописывали в предыдущем задании.*/
