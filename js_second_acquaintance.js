@@ -55,3 +55,75 @@ const blokArray = /!* код впишите сюда *!/
 /*const blokPoem = 'Ночь. Улица. Фонарь. Аптека';
 const blokArray = blokPoem.split(". ")
 console.log(blokArray); // ["Ночь", "Улица", "Фонарь", "Аптека"]*/
+
+/*Вызовом функции parseInt посчитайте суммарное количество героев сказаний 33 богатыря, 24 рыцаря Круглого стола и 300 спартанцев:
+    const bogatyrs = '33 богатыря';
+const knights = '24 рыцаря Круглого стола';
+const spartans = '300 спартанцев';
+const totalHeroes = /!* сюда впишите код *!/
+
+    console.log(totalHeroes);
+
+const bogatyrs = '33 богатыря';
+const knights = '24 рыцаря Круглого стола';
+const spartans = '300 спартанцев';
+const totalHeroes = parseInt(bogatyrs)+parseInt(knights)+parseInt(spartans);
+
+    console.log(totalHeroes);*/
+
+
+/*Неявным приведением измените выражение внутри круглых скобок console.log так, чтобы в консоль вывелась строка "100500".
+
+const hundred = 100;
+const fiveHundred = 500;
+
+console.log("" + hundred + fiveHundred);*/
+
+/*Функция Boolean преобразовывает любые значения в логические: true или false. Раскомментируйте только те строчки программы, которые напечатают в консоли true.*/
+
+/*    //console.log(Boolean());
+    //console.log(Boolean(undefined));
+    //console.log(Boolean(null));
+    //console.log(Boolean(0));
+    console.log(Boolean('0'));
+console.log(Boolean(true));
+//console.log(Boolean(false));
+console.log(Boolean('true'));
+console.log(Boolean('false'));*/
+
+/*В круглых скобках if напишите такое условие, чтобы конструкция if переспросила пароль, если пользователь ничего не ввёл или нажал «Отмена».
+Используйте оператор логическое НЕ.*/
+
+/*let password = prompt('Введите пароль:');
+
+if (!password) {
+    password = prompt('Пароль обязателен и не может быть пустым.');
+}*/
+/*
+Логический оператор !, поставленный перед не булевым значением, приводит его к логическому типу и меняет на противоположное. Пустая строка в логическом контексте — false, а !'' — true:
+!''; // true
+!null; // true
+Таким образом, достаточно использовать оператор ! к переменной password.*/
+
+/*let password = prompt('Введите пароль:');
+
+if (!password) {
+    password = prompt('Пароль обязателен и не может быть пустым.');
+}*/
+
+/*Сделайте так, чтобы из опций Быть или Не быть оператор логическое ИЛИ вернул строку "Быть":
+const answer = /!* напишите ваш код здесь *!/
+
+    console.log(answer); // "Быть" */
+
+/*const answer = ("Быть" || "Не быть"); /!* напишите ваш код здесь *!/
+
+console.log(answer); // "Быть"*/
+
+/*const t = prompt('Какая у вас температура?');
+const normal = (t>= 35.9) && (t <= 37.2);
+
+console.log(normal);
+
+Нормальная температура тела — от 35.9 до 37.2 °С. Напишите такое выражение с оператором логическое И, чтобы в переменной normal сохранялось значение true,
+если значение переменной t лежит в этом диапазоне температур.*/
