@@ -100,7 +100,8 @@ function addSong () {
           <button class="song__like"></button>
         </div>
   `);
-
+    artist.value = '';
+    song.value = '';
     renderAdded();
 }
 /*
@@ -285,3 +286,19 @@ console.log(typeof document.querySelector('.input__text_type_artist').value);
     renderAdded();
 }
 Также код стоит очистить от ненужных выводов в консоль. Удалите вызов console.log, который вы прописывали в предыдущем задании.*/
+/*
+После того как трек добавлен, текстовые поля нужно очистить, чтобы это не делал сам пользователь. Присвойте свойству value каждого текстового поля пустую строку. Делать это нужно сразу после того, как в плейлисте отрисовывается новая песня.
+    function addSong() {
+    let artist = document.querySelector('.input__text_type_artist');
+    let song = document.querySelector('.input__text_type_song');
+
+    songsContainer.insertAdjacentHTML('beforeend', `
+        <div class="song">
+            <h4 class="song__artist">${artist.value}</h4>
+            <p class="song__title">${song.value}</p>
+            <button class="song__like"></button>
+        </div>
+    `);
+
+    renderAdded();
+} */
