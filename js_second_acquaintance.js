@@ -127,3 +127,59 @@ console.log(normal);
 
 Нормальная температура тела — от 35.9 до 37.2 °С. Напишите такое выражение с оператором логическое И, чтобы в переменной normal сохранялось значение true,
 если значение переменной t лежит в этом диапазоне температур.*/
+
+/* Функция принимает 2 аргумента: систолическое
+и диастолическое давление (верхнее и нижнее) */
+
+/*function getNormal(sys, dia) {
+    return sys>100&&sys<135&&dia>60&&dia<85;
+}
+
+console.log(getNormal(110, 70)); // true
+console.log(getNormal(140, 75)); // false
+console.log(getNormal(98, 80)); // false*/
+
+/*Нормальное артериальное давление: верхнее 100–135 мм рт. ст., нижнее 60–85 мм рт. ст. Оба условия должны выполняться.
+    Допишите условие в функции getNormal(sys, dia), чтобы она возвращала true, если давление в пределах нормы, и false — если нет:
+    /!* Функция принимает 2 аргумента:
+    систолическое и диастолическое давление
+    (верхнее и нижнее) *!/
+
+    function getNormal(sys, dia) {
+        return /!* напишите условие тут *!/
+    }
+
+console.log(getNormal(110, 70)); // true
+console.log(getNormal(140, 75)); // false
+console.log(getNormal(98, 80)); // false */
+
+/*
+const animalOrder = 'китообразное';
+const animalClass = 'млекопитающее';
+const hasEmpathy = true;
+
+if (animalOrder === 'китообразное'&&animalClass === 'млекопитающее'&&hasEmpathy)  {
+            console.log('Это же дельфин!');
+        }
+Используя логические операторы, избавьтесь от вложенных конструкций if.*/
+
+const where = prompt('Куда едешь? Налево, направо или прямо?', '').toLowerCase();
+
+switch (where) {
+    case 'налево':
+        console.log('Быть тебе женатым')
+        break;
+}
+switch (where) {
+    case 'прямо':
+        console.log('Живым не бывать')
+        break;
+}
+switch (where) {
+    case 'направо':
+        console.log('Быть тебе богатым')
+        break;
+}
+/*console.log('Быть тебе женатым'); // если ответ "налево",
+console.log('Живым не бывать'); // если "прямо",
+console.log('Быть тебе богатым'); // если "направо".*/
